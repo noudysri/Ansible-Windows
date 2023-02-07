@@ -55,6 +55,10 @@ stages:
               echo 'stage 5'  
 
   - stage: Sixth
+    dependsOn:
+      - third
+      - forth
+      - fifth
     jobs:  
       - job: stagesixth
         steps:
