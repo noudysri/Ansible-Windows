@@ -33,7 +33,7 @@ stages:
               echo 'stage 3'
               
   - stage: Forth
-    dependson: second
+    dependsOn: second
     jobs:  
       - job: stageforth
         steps:
@@ -44,7 +44,7 @@ stages:
               echo 'stage 4'            
     
   - stage: Fifth
-    dependson: second
+    dependsOn: second
     jobs:  
       - job: stagefifth
         steps:
