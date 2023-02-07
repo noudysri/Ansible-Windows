@@ -4,18 +4,20 @@ pr: none
 stages:
   - stage: First
     jobs:  
-      - job: Deploy
+      - job: stageone
         steps:
         - task: Bash@3
           inputs:
             targetType: 'inline'
             script: |
               echo 'stage 1'
- 
-      - job: Deploy1
+  - stage: second
+    jobs:  
+      - job: stagetwo
         steps:
         - task: Bash@3
           inputs:
             targetType: 'inline'
             script: |
               echo 'stage 2'
+ 
