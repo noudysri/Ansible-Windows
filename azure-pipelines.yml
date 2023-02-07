@@ -21,3 +21,46 @@ stages:
             script: |
               echo 'stage 2'
  
+  - stage: third
+    dependsOn: second
+    jobs:  
+      - job: stagethree
+        steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo 'stage 3'
+              
+  - stage: Forth
+    dependson: second
+    jobs:  
+      - job: stageforth
+        steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo 'stage 4'            
+    
+  - stage: Fifth
+    dependson: second
+    jobs:  
+      - job: stagefifth
+        steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo 'stage 5'  
+
+  - stage: Sixth
+    jobs:  
+      - job: stagesixth
+        steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              echo 'stage 6' 
+ 
