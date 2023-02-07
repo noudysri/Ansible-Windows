@@ -12,7 +12,7 @@ stages:
             script: |
               echo 'stage 1'
  
-      - job: Deploy
+      - job: Deploy1
         steps:
         - task: Bash@3
           inputs:
