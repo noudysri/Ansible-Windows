@@ -11,11 +11,9 @@ stages:
             targetType: 'inline'
             script: |
               echo 'stage 1'
-
-        - stage: second
-          jobs:
-            - job: Deploy
-              steps:
+ 
+      - job: Deploy
+        steps:
         - task: Bash@3
           inputs:
             targetType: 'inline'
