@@ -55,6 +55,7 @@ stages:
               echo 'stage 5'  
 
   - stage: Sixth
+    condition: and(succeeded('third'),succeeded('forth'),succeeded('fifth'))
     dependsOn:
       - third
       - forth
