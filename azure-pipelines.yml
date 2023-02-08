@@ -53,7 +53,7 @@ stages:
             targetType: 'inline'
             script: |
               echo 'stage 5'  
-
+              exit 1
   - stage: Sixth
     condition: and(succeeded('third'),succeeded('forth'),succeeded('fifth'))
     dependsOn:
