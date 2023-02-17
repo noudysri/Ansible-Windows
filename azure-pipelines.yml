@@ -3,7 +3,7 @@ trigger: none
 pr: none
 
 stages:
-  - stage: installjava_8 _version
+  - stage: installjava
     jobs: 
       - job: installer
         steps: 
@@ -13,7 +13,7 @@ stages:
             jdkArchitectureOption: 'x64'
             jdkSourceOption: 'PreInstalled'
 
-  - stage: install_Maven_package
+  - stage: installMaven
     jobs: 
       - job: installer
         steps:
