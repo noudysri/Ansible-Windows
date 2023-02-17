@@ -7,20 +7,26 @@ stages:
     jobs: 
       - job: installer
         steps: 
-         - task: Bash@3
-           inputs:
-             targetType: 'inline'
-             script: |
-               # Write your commands here
-               
-               java --version
-               mvn --version
+        - task: JavaToolInstaller@0
+          inputs:
+            versionSpec: '8'
+            jdkArchitectureOption: 'x64'
+            jdkSourceOption: 'PreInstalled'
 
-  #       - task: JavaToolInstaller@0
-  #         inputs:
-  #           versionSpec: '8'
-  #           jdkArchitectureOption: 'x64'
-  #           jdkSourceOption: 'PreInstalled'
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              
+              java --version
+              mvn --version
+
+        # - task: JavaToolInstaller@0
+        #   inputs:
+        #     versionSpec: '8'
+        #     jdkArchitectureOption: 'x64'
+        #     jdkSourceOption: 'PreInstalled'
 
   # - stage: installMaven
   #   jobs: 
@@ -70,3 +76,12 @@ stages:
   #          app_location: 'fe-asda-mock-test/install'
   #          output_location: 'private'
   #          azure_static_web_apps_api_token: 'abcd'
+
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              
+              mvn clean
+              mvn install
