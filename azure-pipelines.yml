@@ -7,50 +7,21 @@ stages:
     jobs: 
       - job: installer
         steps: 
-        # - task: JavaToolInstaller@0
-        #   inputs:
-        #     versionSpec: '8'
-        #     jdkArchitectureOption: 'x64'
-        #     jdkSourceOption: 'PreInstalled'
-
         - task: Bash@3
           inputs:
             targetType: 'inline'
-            script: |
-              # Write your commands here
-              
+            script: |              
               java --version
               mvn --version
+        
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |              
+              mvn clean
+              mvn install
 
-        # - task: JavaToolInstaller@0
-        #   inputs:
-        #     versionSpec: '8'
-        #     jdkArchitectureOption: 'x64'
-        #     jdkSourceOption: 'PreInstalled'
 
-  # - stage: installMaven
-  #   jobs: 
-  #     - job: installer
-  #       steps:
-  #       - task: Maven@3
-  #         inputs:
-  #           mavenPomFile: 'pom.xml'
-  #           mavenOptions: '-Xmx3072m'
-  #           javaHomeOption: 'JDKVersion'
-  #           jdkVersionOption: '1.8'
-  #           jdkArchitectureOption: 'x64'
-  #           goals: 'clean install'
-  #       - task: Maven@4
-  #         inputs:
-  #           mavenPomFile: 'pom.xml'
-  #           goals: 'clean install'
-  #           publishJUnitResults: false
-  #           javaHomeOption: 'JDKVersion'
-  #           mavenVersionOption: 'Default'
-  #           mavenAuthenticateFeed: false
-  #           effectivePomSkip: false
-  #           sonarQubeRunAnalysis: false
- 
   # - stage: install the script
   #   jobs:
   #     - job: installer
@@ -77,11 +48,3 @@ stages:
   #          output_location: 'private'
   #          azure_static_web_apps_api_token: 'abcd'
 
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              # Write your commands here
-              
-              mvn clean
-              mvn install
