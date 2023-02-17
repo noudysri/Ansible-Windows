@@ -1,71 +1,63 @@
 trigger: none
+
 pr: none
 
 stages:
-  - stage: First
-    jobs:  
-      - job: stageone
-        steps:
-        - task: Bash@3
+  - stage: install java 8 version
+    jobs: 
+      - job: installer
+        steps: 
+        - task: JavaToolInstaller@0
           inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 1'
-  - stage: second
-    jobs:  
-      - job: stagetwo
+            versionSpec: '8'
+            jdkArchitectureOption: 'x64'
+            jdkSourceOption: 'PreInstalled'
+
+  - stage: install Maven package
+    jobs: 
+      - job: installer
         steps:
-        - task: Bash@3
+        - task: Maven@3
           inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 2'
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            goals: 'clean install'
+        - task: Maven@4
+          inputs:
+            mavenPomFile: 'pom.xml'
+            goals: 'clean install'
+            publishJUnitResults: false
+            javaHomeOption: 'JDKVersion'
+            mavenVersionOption: 'Default'
+            mavenAuthenticateFeed: false
+            effectivePomSkip: false
+            sonarQubeRunAnalysis: false
  
-  - stage: third
-    dependsOn: second
-    jobs:  
-      - job: stagethree
-        steps:
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 3'
-              
-  - stage: Forth
-    dependsOn: second
-    jobs:  
-      - job: stageforth
-        steps:
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 4'            
-    
-  - stage: Fifth
-    dependsOn: second
-    jobs:  
-      - job: stagefifth
-        steps:
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 5'  
-              exit 1
-  - stage: Sixth
-    condition: and(succeeded('third'),succeeded('forth'),succeeded('fifth'))
-    dependsOn:
-      - third
-      - forth
-      - fifth
-    jobs:  
-      - job: stagesixth
-        steps:
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |
-              echo 'stage 6' 
- 
+  # - stage: install the script
+  #   jobs:
+  #     - job: installer
+  #       steps:
+  #       - task: ShellScript@2
+  #         inputs:
+  #           scriptPath: 'install.sh'       
+
+  # - stage: Start the script
+  #   jobs:
+  #     - job: installer
+  #       steps:
+  #       - task: ShellScript@2
+  #         inputs:
+  #           scriptPath: 'start.sh' 
+
+  # - stage: Deply to static web
+  #   jobs:
+  #    - job: deploy
+  #      steps:
+  #      - task: AzureStaticWebApp@0
+  #        inputs:
+  #          app_location: 'fe-asda-mock-test/install'
+  #          output_location: 'private'
+  #          azure_static_web_apps_api_token: 'abcd'
