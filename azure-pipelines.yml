@@ -9,20 +9,27 @@ schedules:
     include:
     - master
 
-stages:
-  - stage: installjava
-    jobs: 
-      - job: installer
-        steps: 
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |              
-              java --version
-              mvn --version
-      - task: PowerShell@2
-        inputs:
-          filePath: '$(System.DefaultWorkingDirectory)'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      echo 'Hello world'
+# stages:
+#   -stage: installjava
+#     jobs: 
+#       - job: installer
+#         steps: 
+#         - task: Bash@3
+#           inputs:
+#             targetType: 'inline'
+#             script: |              
+#               java --version
+#               mvn --version
+#       - task: PowerShell@2
+#         inputs:
+#           filePath: '$(System.DefaultWorkingDirectory)'
 
       
         # - task: Bash@3
