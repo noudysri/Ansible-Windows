@@ -7,7 +7,7 @@ schedules:
   displayName: 25th 5:30 AM (IST) Every Month
   branches:
     include:
-      master
+    -  master
 
 - task: Bash@3
   inputs:
@@ -16,6 +16,7 @@ schedules:
       # Write your commands here
       
       echo 'Hello world'
+
 # stages:
 #   -stage: installjava
 #     jobs: 
