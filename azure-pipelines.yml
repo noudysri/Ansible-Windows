@@ -14,12 +14,12 @@ stages:
               java --version
               mvn --version
         
-        - task: Bash@3
-          inputs:
-            targetType: 'inline'
-            script: |              
-              mvn clean
-              mvn install
+        # - task: Bash@3
+        #   inputs:
+        #     targetType: 'inline'
+        #     script: |              
+        #       mvn clean
+        #       mvn install
 
 
   # - stage: install the script
