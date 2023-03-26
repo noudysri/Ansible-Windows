@@ -9,9 +9,9 @@ schedules:
     include:
     - master
 
-- task: PowerShell@2
+- task:PowerShell@2
   inputs:
-    targetType: 'inline'
+    targetType:'inline'
     script: |
       $StorageAccountName="mystorage61"  
        $ResourceGroupName="DefaultResourceGroup-EUS"  
@@ -58,7 +58,7 @@ schedules:
           #Debug log  
           # Write-Host  $DirIndex $dirsToList.Length  $dir.CloudFileDirectory.SnapshotQualifiedUri.ToString()   
       }
-      
+
 # - task: PowerShell@2
 #   inputs:
 #     filePath: '$(System.DefaultWorkingDirectory).'   
