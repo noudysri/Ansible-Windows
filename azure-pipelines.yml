@@ -7,24 +7,21 @@ schedules:
   displayName: 25th 5:30 AM (IST) Every Month
   branches:
     include:
-      - master
+    - master
 
 stages:
-  -stage: installjava
-    jobs: 
-      - job: installer
-        steps: 
-        - task: Bash@3
+  - stage: update
+    jobs:
+      - job: 
+        steps:
+        - task: PowerShell@2
           inputs:
-            targetType: 'inline'
-            script: |              
-              java --version
-              mvn --version
-#       - task: PowerShell@2
-#         inputs:
-#           filePath: '$(System.DefaultWorkingDirectory)'
+            filePath: '$(System.DefaultWorkingDirectory).'
 
-      
+# - task: PowerShell@2
+#   inputs:
+#     filePath: '$(System.DefaultWorkingDirectory).'
+     
         # - task: Bash@3
         #   inputs:
         #     targetType: 'inline'
