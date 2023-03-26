@@ -16,17 +16,22 @@ pr: none
 #       # Write your commands here     
 #       Install-Module Az
 
+  # - task: PowerShell@2
+  #   displayName: 'Install Az module'
+  #   inputs:
+  #     targetType: 'inline'
+  #     script: 'Install-Module -Name Az -AllowClobber -Scope CurrentUser'
+
 stages:
 - stage: 
   jobs:
     - job:
       steps:
-      - task: Bash@3
+      - task: PowerShell@2
+        displayName: 'Install Az module'
         inputs:
           targetType: 'inline'
-          script: |
-      # Write your commands here     
-            Install-Module Az
+          script: 'Install-Module -Name Az -AllowClobber -Scope CurrentUser'
 
       - task: PowerShell@2
         inputs:
