@@ -12,7 +12,7 @@ pr: none
 steps:
   - task: PowerShell@2
     inputs:
-     filePath: './powershellscript.ps'
+     filePath:  "$(System.DefaultWorkingDirectory)/powershellscript.ps1"
 
 #  task: PowerShell@2
 #  inputs:
