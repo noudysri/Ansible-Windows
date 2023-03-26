@@ -12,9 +12,10 @@ stages:
 - stage: 
   jobs:
     - job:
-    
-- task:PowerShell@2
-  inputs: 
+      steps:
+        -
+- task: PowerShell@2
+  inputs:
     targetType: 'inline'
     script: |
       $StorageAccountName="mystorage61"  
@@ -62,6 +63,7 @@ stages:
           #Debug log  
           # Write-Host  $DirIndex $dirsToList.Length  $dir.CloudFileDirectory.SnapshotQualifiedUri.ToString()   
       }
+
 # steps:
 #   - task: PowerShell@2
 #     inputs:     
