@@ -9,6 +9,10 @@ pr: none
 #     include:
 #     - master
 stages:
+- stage: 
+  jobs:
+    - job:
+    
 - task:PowerShell@2
   inputs: 
     targetType: 'inline'
