@@ -16,17 +16,29 @@ pr: none
 #       # Write your commands here     
 #       Install-Module Az
 
-  # - task: PowerShell@2
-  #   displayName: 'Install Az module'
-  #   inputs:
-  #     targetType: 'inline'
-  #     script: 'Install-Module -Name Az -AllowClobber -Scope CurrentUser'
+# - task: PowerShell@2
+#   displayName: 'Install Az module'
+#   inputs:
+#     targetType: 'inline'
+#     script: 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser'
+
+# - task: PowerShell@2
+#   displayName: 'Install Az module'
+#   inputs:
+#     targetType: 'inline'
+#     script: 'Install-Module -Name Az -AllowClobber -Scope CurrentUser'
 
 stages:
 - stage: 
   jobs:
     - job:
       steps:
+      - task: PowerShell@2
+        displayName: 'Install Az module'
+        inputs:
+          targetType: 'inline'
+          script: 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser'
+
       - task: PowerShell@2
         displayName: 'Install Az module'
         inputs:
