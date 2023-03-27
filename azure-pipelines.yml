@@ -17,7 +17,8 @@ pool:
 #     targetType: 'inline'
 #     script: |
 #       # Write your commands here     
-#       Install-Module Az
+#       $PSExecutionPolicyPreference = 'RemoteSigned'
+
 
 # - task: PowerShell@2
 #   displayName: 'Install Az module'
