@@ -2,6 +2,9 @@ trigger: none
 
 pr: none
 
+pool:
+  vmimage: windows-latest
+
 # schedules:
 # - cron: "0 2 1-7 * SUN"
 #   displayName: 25th 5:30 AM (IST) Every Month
